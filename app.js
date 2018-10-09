@@ -72,10 +72,6 @@ app.controller('productsCtrl', ['$scope', function ($scope) {
         "child": false
     };
 
-    $scope.changeFilter  = function (obj) {
-        return !$scope.showCategory[obj];
-    }
-
 }]);
 
 

@@ -10,9 +10,11 @@
 </head>
 <body>
 <header>
-    <img id="logo"
-         src="img/logo.png"
-         alt="logo">
+    <a href="index.html">
+        <img id="logo"
+             src="img/logo.png"
+             alt="logo">
+    </a>
     <nav>
         <a href="index.html">Home</a>
         <a href="#catalog">Products</a>
@@ -20,7 +22,7 @@
 
     <h1>Our clothing, your comfort</h1>
     <p>Зона комфорта — область жизненного пространства, в которой человек чувствует себя уверенно и безопасно.</p>
-    <img id="scroll" src="img/down-arrow.png" alt="arrow">
+    <a href="#catalog"> <img id="arrow" src="img/down-arrow.png" alt="arrow"></a>
 </header>
 <main>
     <div id="catalog" ng-controller="productsCtrl">
@@ -40,10 +42,10 @@
                         <option ng-repeat="size in item.options">{{size}}</option>
                     </select>
                     <figure>
-                        <img id="item" src="img/{{item.img}}.png">
+                        <img id="item" ng-src="img/{{item.img}}.png">
                         <figcaption>
-                            <p>{{item.name}}</p>
-                            <p>{{item.price}}</p>
+                            <p class="itemName">{{item.name}}</p>
+                            <p class="itemPrice">{{item.price}}&#8364;</p>
                         </figcaption>
                     </figure>
                 </li>
@@ -52,19 +54,24 @@
     </div>
 </main>
 <footer ng-controller="menuCtrl">
-    <div class="social">twitter</div>
-
+    <div class="social"><img id="twitter" src="img/twitter.png"><img id="vk" src="img/vk.png"><img id="facebook"
+                                                                                                   src="img/facebook.png">
+    </div>
     <div class="footerInfo">
-        <p>info</p>
+        <div class="footerInfoLeft">
+            <h5>Способы оплаты</h5>
+            <p>Вы можете оплатить покупки наличными при получении, либо выбрать другой способ оплаты.</p>
+        </div>
         <div class="footerInfoRight">
             <ul id="footerLink">
                 <li ng-repeat="menu in data.footerMenu"><a href="{{menu.link}}" title="{{menu.title}}">{{menu.name |
                     uppercase}} </a> |
                 </li>
             </ul>
-            <p>Design by giancula cosetta</p>
+
         </div>
     </div>
+
 </footer>
 </body>
 </html>
