@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="testTask">
+<head>
+    <meta charset="UTF-8">
+    <title>OUR Clothing</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.4/angular.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<header>
+    <img id="logo"
+         src="img/logo.png"
+         alt="logo">
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="#catalog">Products</a>
+    </nav>
+
+    <h1>Our clothing, your comfort</h1>
+    <p>Зона комфорта — область жизненного пространства, в которой человек чувствует себя уверенно и безопасно.</p>
+    <img id="scroll" src="img/down-arrow.png" alt="arrow">
+</header>
+<main>
+    <div id="catalog" ng-controller="productsCtrl">
+        <div class="navForProducts">
+
+            <label>Men<input type="checkbox" ng-model="showCategory.men" ng-click="stopForsing()"></label>
+            <label>Women<input type="checkbox" ng-model="showCategory.women" ng-click="stopForsing()"></label>
+            <label>Child<input type="checkbox" ng-model="showCategory.child" ng-click="stopForsing()"></label>
+
+            <button class="seeAllProducts" ng-click="startForsing()">SEE ALL PRODUCTS</button>
+
+        </div>
+        <div>
+            <ul id="products">
+                <li ng-repeat="item in data.items" ng-show="showItemOrNot(item)">
+                    <select>
+                        <option ng-repeat="size in item.options">{{size}}</option>
+                    </select>
+                    <figure>
+                        <img id="item" src="img/{{item.img}}.png">
+                        <figcaption>
+                            <p>{{item.name}}</p>
+                            <p>{{item.price}}</p>
+                        </figcaption>
+                    </figure>
+                </li>
+            </ul>
+        </div>
+    </div>
+</main>
+<footer ng-controller="menuCtrl">
+    <div class="social">twitter</div>
+
+    <div class="footerInfo">
+        <p>info</p>
+        <div class="footerInfoRight">
+            <ul id="footerLink">
+                <li ng-repeat="menu in data.footerMenu"><a href="{{menu.link}}" title="{{menu.title}}">{{menu.name |
+                    uppercase}} </a> |
+                </li>
+            </ul>
+            <p>Design by giancula cosetta</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
